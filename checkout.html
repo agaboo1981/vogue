@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - VOGUE.</title>
+    <meta name="description" content="Secure checkout for VOGUE sustainable fashion orders.">
+    <link rel="canonical" href="/checkout.html">
+    <meta property="og:title" content="Checkout - VOGUE.">
+    <meta property="og:description" content="Complete your order with secure payment and fast shipping.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/assets/icon-badge.svg">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="assets/icon-badge.svg">
+    <link rel="apple-touch-icon" href="assets/icon-badge.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-gray-900 font-sans">
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor hidden md:block"></div>
+
+    <div class="min-h-screen grid grid-cols-1 lg:grid-cols-2">
+        <!-- Left Column: Forms -->
+        <div class="p-8 lg:p-20 order-2 lg:order-1">
+            <div class="max-w-xl mx-auto">
+                <a href="index.html" class="inline-block text-2xl font-black tracking-tighter mb-12">VOGUE<span class="text-rose-500">.</span></a>
+                
+                <!-- Steps -->
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="checkout-step active flex items-center gap-2">
+                        <div class="step-number w-8 h-8 rounded-full border-2 flex items-center justify-center font-bold text-sm">1</div>
+                        <span class="text-xs font-bold uppercase tracking-widest">Shipping</span>
+                    </div>
+                    <div class="w-12 h-px bg-gray-200"></div>
+                    <div class="checkout-step flex items-center gap-2 text-gray-400">
+                        <div class="step-number w-8 h-8 rounded-full border-2 border-gray-200 flex items-center justify-center font-bold text-sm">2</div>
+                        <span class="text-xs font-bold uppercase tracking-widest">Payment</span>
+                    </div>
+                </div>
+
+                <form class="space-y-8">
+                    <!-- Contact -->
+                    <div>
+                        <h3 class="text-lg font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-input" placeholder="you@example.com">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <input type="checkbox" id="newsletter" class="accent-black w-4 h-4">
+                                <label for="newsletter" class="text-sm text-gray-500">Email me with news and offers</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shipping Address -->
+                    <div>
+                        <h3 class="text-lg font-bold mb-6">Shipping Address</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="col-span-2 md:col-span-1">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-input" placeholder="Jane">
+                            </div>
+                            <div class="col-span-2 md:col-span-1">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-input" placeholder="Doe">
+                            </div>
+                            <div class="col-span-2">
+                                <label class="form-label">Address</label>
+                                <input type="text" class="form-input" placeholder="123 Fashion St">
+                            </div>
+                            <div class="col-span-2 md:col-span-1">
+                                <label class="form-label">City</label>
+                                <input type="text" class="form-input" placeholder="New York">
+                            </div>
+                            <div class="col-span-2 md:col-span-1">
+                                <label class="form-label">Postal Code</label>
+                                <input type="text" class="form-input" placeholder="10001">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="pt-8 flex justify-between items-center">
+                        <a href="product.html" class="text-sm font-bold text-gray-500 hover:text-black flex items-center gap-2">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                            Return to Cart
+                        </a>
+                        <button type="button" class="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-rose-500 transition-colors shadow-lg">Continue to Payment</button>
+                    </div>
+                </form>
+
+                <div class="mt-20 pt-8 border-t border-gray-100 flex gap-6">
+                    <a href="checkout.html" class="text-xs font-bold text-gray-400 hover:text-black uppercase tracking-widest">Refund Policy</a>
+                    <a href="checkout.html" class="text-xs font-bold text-gray-400 hover:text-black uppercase tracking-widest">Privacy Policy</a>
+                    <a href="checkout.html" class="text-xs font-bold text-gray-400 hover:text-black uppercase tracking-widest">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Order Summary -->
+        <div class="bg-gray-50 p-8 lg:p-20 order-1 lg:order-2 border-l border-gray-100">
+            <div class="max-w-md mx-auto sticky top-20">
+                <div class="mb-8">
+                    <div class="flex gap-4 mb-6">
+                        <div class="w-20 h-24 bg-white rounded-lg overflow-hidden border border-gray-200 relative">
+                            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=200" alt="Minimalist Linen Dress" class="w-full h-full object-cover">
+                            <span class="absolute top-0 right-0 -mt-2 -mr-2 w-6 h-6 bg-gray-500 text-white rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold">Minimalist Linen Dress</h4>
+                            <p class="text-sm text-gray-500">Natural Beige / S</p>
+                        </div>
+                        <p class="font-bold serif italic">$120.00</p>
+                    </div>
+                    <div class="flex gap-4 mb-6">
+                        <div class="w-20 h-24 bg-white rounded-lg overflow-hidden border border-gray-200 relative">
+                            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&q=80&w=200" alt="Urban Sneakers" class="w-full h-full object-cover">
+                            <span class="absolute top-0 right-0 -mt-2 -mr-2 w-6 h-6 bg-gray-500 text-white rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold">Urban Sneakers</h4>
+                            <p class="text-sm text-gray-500">White / 38</p>
+                        </div>
+                        <p class="font-bold serif italic">$85.00</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4 py-8 border-t border-gray-200">
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>Subtotal</span>
+                        <span class="font-medium text-black">$205.00</span>
+                    </div>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>Shipping</span>
+                        <span class="font-medium text-black">Free</span>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center py-8 border-t border-gray-200">
+                    <span class="text-xl font-bold">Total</span>
+                    <div class="text-right">
+                        <span class="text-xs text-gray-400 block mb-1">USD</span>
+                        <span class="text-3xl font-black tracking-tight serif italic">$205.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

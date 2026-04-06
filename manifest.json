@@ -1,0 +1,17 @@
+{
+  "name": "VOGUE Sustainable Fashion",
+  "short_name": "VOGUE",
+  "description": "Premium sustainable fashion storefront with curated essentials and transparent sourcing.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f43f5e",
+  "icons": [
+    {
+      "src": "assets/icon-badge.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Dress - VOGUE.</title>
+    <meta name="description" content="Explore the Minimalist Linen Dress and curated styling picks from VOGUE.">
+    <link rel="canonical" href="/product.html">
+    <meta property="og:title" content="Minimalist Dress - VOGUE.">
+    <meta property="og:description" content="Premium sustainable design crafted with organic linen and conscious materials.">
+    <meta property="og:type" content="product">
+    <meta property="og:image" content="/assets/icon-badge.svg">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="assets/icon-badge.svg">
+    <link rel="apple-touch-icon" href="assets/icon-badge.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor hidden md:block"></div>
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[70] opacity-0 visibility-hidden flex items-center justify-center p-4">
+        <button id="close-search" title="Close search" aria-label="Close search" class="absolute top-8 right-8 p-2 hover:bg-gray-100 rounded-full transition">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <div class="search-content w-full max-w-4xl">
+            <input type="text" placeholder="Search for products, collections..." class="w-full text-4xl md:text-6xl font-black bg-transparent border-b-2 border-gray-200 py-8 focus:outline-none focus:border-black transition-colors placeholder:text-gray-300">
+            <div class="mt-12">
+                <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Popular Searches</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="product.html" class="px-6 py-3 bg-gray-50 rounded-full font-medium hover:bg-black hover:text-white transition-colors">Sustainable Linen</a>
+                    <a href="index.html#trending" class="px-6 py-3 bg-gray-50 rounded-full font-medium hover:bg-black hover:text-white transition-colors">Summer 2026</a>
+                    <a href="index.html#support" class="px-6 py-3 bg-gray-50 rounded-full font-medium hover:bg-black hover:text-white transition-colors">Accessories</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="fixed top-0 right-0 w-full md:w-[450px] h-full bg-white z-[60] shadow-2xl transform translate-x-full transition-transform duration-500 ease-in-out border-l border-gray-100">
+        <div class="p-8 h-full flex flex-col">
+            <div class="flex justify-between items-center mb-12">
+                <h3 class="text-3xl font-bold tracking-tight">Your Bag</h3>
+                <button id="close-cart" title="Close cart" aria-label="Close cart" class="p-2 hover:bg-gray-100 rounded-full transition">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="flex-1 overflow-y-auto space-y-8">
+                <div class="text-center py-20 text-gray-400">
+                    <i data-lucide="shopping-bag" class="w-12 h-12 mx-auto mb-4 opacity-20"></i>
+                    <p class="font-medium">Your bag is currently empty.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-100 pt-8 mt-auto">
+                <div class="flex justify-between text-lg font-bold mb-6">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <a href="checkout.html" class="w-full bg-black text-white py-5 rounded-full font-bold hover:bg-rose-500 transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    Checkout Now
+                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="cart-overlay" class="fixed inset-0 bg-black/20 backdrop-blur-sm z-[55] hidden opacity-0 transition-opacity duration-500"></div>
+
+    <nav class="bg-white/80 shadow-sm p-4 sticky top-0 z-50 backdrop-blur-xl transition-all duration-300 border-b border-gray-100/50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-black tracking-tighter group">VOGUE<span class="text-rose-500 group-hover:animate-pulse">.</span></a>
+            <div class="hidden md:flex space-x-10 text-[11px] font-bold uppercase tracking-widest text-gray-500">
+                <a href="index.html#trending" class="hover:text-rose-500 transition-colors">New Arrivals</a>
+                <a href="index.html#runway-showcase" class="hover:text-rose-500 transition-colors">Collections</a>
+                <a href="index.html#sustainability" class="hover:text-rose-500 transition-colors">Sustainability</a>
+                <a href="product.html" class="hover:text-rose-500 transition-colors">Journal</a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <button id="open-search" aria-label="Search" class="hover:text-rose-500 transition-transform hover:scale-110 active:scale-95">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                </button>
+                <button id="open-cart" aria-label="Open Cart" class="hover:text-rose-500 relative transition-transform hover:scale-110 active:scale-95">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-rose-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail Section -->
+    <main class="py-12 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Product Gallery -->
+                <div class="lg:col-span-7 product-gallery-grid">
+                    <div class="bg-gray-100 rounded-xl overflow-hidden aspect-[3/4]">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=800" alt="Detail 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="bg-gray-100 rounded-xl overflow-hidden aspect-[3/4]">
+                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=800" alt="Detail 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="bg-gray-100 rounded-xl overflow-hidden aspect-[3/4]">
+                        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&q=80&w=800" alt="Detail 3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="bg-gray-100 rounded-xl overflow-hidden aspect-[3/4]">
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800" alt="Detail 4" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+
+                <!-- Product Details -->
+                <div class="lg:col-span-5 relative">
+                    <div class="sticky top-32">
+                        <div class="mb-8">
+                            <span class="text-xs font-bold uppercase tracking-widest text-rose-500 mb-2 block">New Season</span>
+                            <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4">Minimalist Linen Dress</h1>
+                            <p class="text-2xl font-medium serif italic text-gray-500">$120.00</p>
+                        </div>
+
+                        <p class="text-gray-600 leading-relaxed mb-8">
+                            Crafted from 100% organic European linen, this dress features a relaxed silhouette perfect for warm summer days. Breathable, sustainable, and effortlessly chic.
+                        </p>
+
+                        <!-- Color Selector -->
+                        <div class="mb-8">
+                            <p class="text-xs font-bold uppercase tracking-widest text-gray-900 mb-4">Color: <span class="text-gray-500 font-normal">Natural Beige</span></p>
+                            <div class="flex gap-4 color-selector">
+                                <div class="relative">
+                                    <input type="radio" name="color" id="color-beige" title="Natural Beige" aria-label="Natural Beige" class="peer sr-only" checked>
+                                    <label for="color-beige" class="block w-10 h-10 rounded-full bg-[#E5D0B1] cursor-pointer hover:scale-110 transition-transform"><span class="sr-only">Natural Beige</span></label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="color" id="color-black" title="Black" aria-label="Black" class="peer sr-only">
+                                    <label for="color-black" class="block w-10 h-10 rounded-full bg-black cursor-pointer hover:scale-110 transition-transform"><span class="sr-only">Black</span></label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="color" id="color-olive" title="Olive" aria-label="Olive" class="peer sr-only">
+                                    <label for="color-olive" class="block w-10 h-10 rounded-full bg-[#556B2F] cursor-pointer hover:scale-110 transition-transform"><span class="sr-only">Olive</span></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Size Selector -->
+                        <div class="mb-10">
+                            <div class="flex justify-between items-center mb-4">
+                                <p class="text-xs font-bold uppercase tracking-widest text-gray-900">Size</p>
+                                <button class="text-xs text-gray-400 hover:text-black underline">Size Guide</button>
+                            </div>
+                            <div class="grid grid-cols-5 gap-2 size-selector">
+                                <div class="relative">
+                                    <input type="radio" name="size" id="size-xs" class="peer sr-only">
+                                    <label for="size-xs" class="flex items-center justify-center w-full h-12 border border-gray-200 rounded-lg cursor-pointer hover:border-black transition-colors font-bold text-sm">XS</label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size" id="size-s" class="peer sr-only" checked>
+                                    <label for="size-s" class="flex items-center justify-center w-full h-12 border border-gray-200 rounded-lg cursor-pointer hover:border-black transition-colors font-bold text-sm">S</label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size" id="size-m" class="peer sr-only">
+                                    <label for="size-m" class="flex items-center justify-center w-full h-12 border border-gray-200 rounded-lg cursor-pointer hover:border-black transition-colors font-bold text-sm">M</label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size" id="size-l" class="peer sr-only">
+                                    <label for="size-l" class="flex items-center justify-center w-full h-12 border border-gray-200 rounded-lg cursor-pointer hover:border-black transition-colors font-bold text-sm">L</label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size" id="size-xl" class="peer sr-only">
+                                    <label for="size-xl" class="flex items-center justify-center w-full h-12 border border-gray-200 rounded-lg cursor-pointer hover:border-black transition-colors font-bold text-sm">XL</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex gap-4 mb-8">
+                            <div class="flex items-center border border-gray-200 rounded-full px-4 w-32">
+                                <button class="w-8 h-8 flex items-center justify-center hover:text-rose-500">-</button>
+                                <input type="text" value="1" aria-label="Quantity" title="Quantity" class="w-full text-center bg-transparent border-none focus:outline-none font-bold">
+                                <button class="w-8 h-8 flex items-center justify-center hover:text-rose-500">+</button>
+                            </div>
+                            <button class="flex-1 bg-black text-white py-4 rounded-full font-bold uppercase tracking-widest hover:bg-rose-500 transition-colors shadow-xl shadow-rose-500/10 add-to-cart" data-id="1" data-name="Minimalist Dress" data-price="120">Add to Bag</button>
+                            <button title="Save to wishlist" aria-label="Save to wishlist" class="w-14 h-14 border border-gray-200 rounded-full flex items-center justify-center hover:border-rose-500 hover:text-rose-500 transition-colors">
+                                <i data-lucide="heart" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+
+                        <!-- Trust Badges -->
+                        <div class="grid grid-cols-2 gap-4 pt-8 border-t border-gray-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-rose-500">
+                                    <i data-lucide="truck" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold uppercase">Free Shipping</p>
+                                    <p class="text-[10px] text-gray-500">On all orders over $200</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-rose-500">
+                                    <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold uppercase">Free Returns</p>
+                                    <p class="text-[10px] text-gray-500">Within 30 days</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Complete the Look -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h3 class="text-3xl font-bold mb-12 text-center serif italic">Complete the Look</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                 <!-- Product Card 3 -->
+                 <div class="product-card group cursor-pointer">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4] rounded-xl bg-white">
+                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&q=80&w=600" alt="Shoes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                            <button class="add-to-cart w-full bg-black text-white py-3 rounded-lg font-bold text-xs tracking-widest hover:bg-rose-500 transition-colors shadow-2xl" data-id="3" data-name="Urban Sneakers" data-price="85">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold tracking-tight">Urban Sneakers</h4>
+                        <p class="text-gray-500 serif italic">$85.00</p>
+                    </div>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="product-card group cursor-pointer">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4] rounded-xl bg-white">
+                        <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&q=80&w=600" alt="Bag" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                            <button class="add-to-cart w-full bg-black text-white py-3 rounded-lg font-bold text-xs tracking-widest hover:bg-rose-500 transition-colors shadow-2xl" data-id="4" data-name="Leather Tote" data-price="210">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold tracking-tight">Leather Tote</h4>
+                        <p class="text-gray-500 serif italic">$210.00</p>
+                    </div>
+                </div>
+                <!-- Product Card 5 (New) -->
+                <div class="product-card group cursor-pointer">
+                    <div class="relative overflow-hidden mb-6 aspect-[3/4] rounded-xl bg-white">
+                        <img src="https://images.unsplash.com/photo-1627916607164-7b20241db935?auto=format&fit=crop&q=80&w=600" alt="Hat" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                            <button class="add-to-cart w-full bg-black text-white py-3 rounded-lg font-bold text-xs tracking-widest hover:bg-rose-500 transition-colors shadow-2xl" data-id="5" data-name="Straw Hat" data-price="45">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold tracking-tight">Woven Straw Hat</h4>
+                        <p class="text-gray-500 serif italic">$45.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-24 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+            <h4 class="text-3xl font-black mb-8 tracking-tighter">VOGUE<span class="text-rose-500">.</span></h4>
+            <div class="flex space-x-8 text-sm font-bold uppercase tracking-widest text-gray-500 mb-12">
+                <a href="index.html" class="hover:text-black transition-colors">Home</a>
+                <a href="index.html#trending" class="hover:text-black transition-colors">Shop</a>
+                <a href="index.html#sustainability" class="hover:text-black transition-colors">About</a>
+                <a href="checkout.html" class="hover:text-black transition-colors">Contact</a>
+            </div>
+            <p class="text-xs text-gray-400 font-medium">&copy; 2026 VOGUE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

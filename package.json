@@ -1,0 +1,15 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "seo": "node scripts/generate-seo-files.cjs",
+    "prebuild": "npm run seo",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.0.0"
+  }
+}
