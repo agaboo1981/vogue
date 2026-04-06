@@ -1,4 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const bindZoomGuards = () => {
+        let lastTouchEnd = 0;
+
+        ['gesturestart', 'gesturechange', 'gestureend'].forEach((eventName) => {
+            document.addEventListener(eventName, (event) => {
+                event.preventDefault();
+            }, { passive: false });
+        });
+
+        document.addEventListener('touchmove', (event) => {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        document.addEventListener('touchend', (event) => {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 280) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, { passive: false });
+
+        document.addEventListener('wheel', (event) => {
+            if (event.ctrlKey || event.metaKey) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+    };
+
+    bindZoomGuards();
+
     const IMAGE_FALLBACK_SRC = new URL('../assets/fallback-fashion.svg', import.meta.url).href;
     const UNSPLASH_HOST = 'images.unsplash.com';
     const FALLBACK_BACKGROUND = 'linear-gradient(135deg, #e7dfd7 0%, #f5f1ec 50%, #e2d7ca 100%)';
