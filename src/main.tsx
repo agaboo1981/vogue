@@ -196,115 +196,266 @@ function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void })
   );
 }
 
-const DIALOG_CONTENT = {
-  privacy: {
-    title: 'Privacy Policy',
-    content: (
-      <>
-        <p>VOGUE. is committed to protecting your privacy and ensuring you have a positive experience on our website.</p>
-        <h3>Data Collection</h3>
-        <p>We collect minimal data required to process your orders and improve our regenerative supply chain.</p>
-        <h3>Third Parties</h3>
-        <p>We never sell your data. We only share necessary information with our traceable shipping partners.</p>
-      </>
-    )
-  },
-  terms: {
-    title: 'Terms of Service',
-    content: (
-      <>
-        <p>By using VOGUE., you agree to our terms of service which prioritize transparency and sustainability.</p>
-        <h3>Purchases</h3>
-        <p>All purchases are subject to availability. Our items are produced in small batches.</p>
-      </>
-    )
-  },
-  contact: {
-    title: 'Contact Us',
-    content: (
-      <>
-        <p>We're here to help with your regenerative wardrobe.</p>
-        <p><strong>Email:</strong> atelier@vogue.test</p>
-        <p><strong>Hours:</strong> Mon-Fri, 9am - 5pm EST</p>
-      </>
-    )
-  },
-  materials: {
-    title: 'Materials Ledger',
-    content: (
-      <>
-        <p>Every fiber we use is traceable to its source.</p>
-        <ul>
-          <li><strong>Linen:</strong> Sourced from Normandy, dew-retted naturally.</li>
-          <li><strong>Buttons:</strong> Carved from fallen Corozo nuts in Ecuador.</li>
-          <li><strong>Thread:</strong> 100% organic cotton, biodegradable.</li>
-        </ul>
-      </>
-    )
-  },
-  returns: {
-    title: 'Shipping & Returns',
-    content: (
-      <>
-        <p>We use carbon-neutral shipping for all orders.</p>
-        <h3>Returns</h3>
-        <p>You have 30 days to return unworn items. We encourage repairs before replacement.</p>
-      </>
-    )
-  },
-  story: {
-    title: 'Our Story',
-    content: (
-      <>
-        <p>VOGUE. was founded on a simple principle: clothing should leave no trace.</p>
-        <p>We spent two years developing a fully circular supply chain before producing our first garment.</p>
-      </>
-    )
-  },
-  sustainability: {
-    title: 'Sustainability',
-    content: (
-      <>
-        <p>Sustainability is not a feature; it's our entire business model.</p>
-        <p>We measure our impact in carbon negated, water saved, and fair wages paid.</p>
-      </>
-    )
-  },
-  faq: {
-    title: 'FAQ',
-    content: (
-      <>
-        <h3>Do you offer repairs?</h3>
-        <p>Yes, all items come with a lifetime repair guarantee.</p>
-        <h3>How do I care for linen?</h3>
-        <p>Cold wash, line dry. The fabric softens beautifully over time.</p>
-      </>
-    )
-  }
-};
+function LegalPage({ title, eyebrow, children }: { title: string; eyebrow: string; children: React.ReactNode }) {
+  return (
+    <PageTransition>
+      <main className="legal-page">
+        <div className="legal-page-inner">
+          <a href="/index.html" className="legal-back">
+            <ArrowLeft size={15} /> Back to store
+          </a>
+          <p className="eyebrow">{eyebrow}</p>
+          <h1 className="legal-title">{title}</h1>
+          <div className="legal-body">{children}</div>
+        </div>
+      </main>
+    </PageTransition>
+  );
+}
 
-function InfoDialog({ contentKey, onClose }: { contentKey: keyof typeof DIALOG_CONTENT | null; onClose: () => void }) {
-  const modalRef = useFocusTrap<HTMLDivElement>(!!contentKey, onClose);
-  const content = contentKey ? DIALOG_CONTENT[contentKey] : null;
+function PrivacyPage() {
+  return (
+    <LegalPage title="Privacy Policy" eyebrow="Legal">
+      <p className="lead">VOGUE. is committed to radical transparency. This policy explains exactly what data we collect, why we collect it, and how it's protected. We use plain language — no legalese.</p>
+      <h2>What we collect</h2>
+      <p>We collect only what's necessary to fulfil your order and improve your experience:</p>
+      <ul>
+        <li><strong>Name & contact details</strong> — to process and communicate about your order.</li>
+        <li><strong>Delivery address</strong> — to ship your order to the right place.</li>
+        <li><strong>Payment information</strong> — processed by our PCI-compliant payment provider. We never store full card details.</li>
+        <li><strong>Browsing data</strong> — anonymised analytics. No cross-site tracking.</li>
+      </ul>
+      <h2>What we don't collect</h2>
+      <p>We don't run advertising trackers, we don't build behavioural profiles, and we don't sell data — ever.</p>
+      <h2>How we store it</h2>
+      <p>All data is stored in encrypted, EU-based servers. We retain order data for seven years to comply with accounting regulations, after which it is permanently deleted.</p>
+      <h2>Third parties</h2>
+      <p>We share your data only with our logistics partner (delivery address only), our payment processor (card data only), and our email provider (for order confirmations only). All partners are contractually prohibited from using your data for any other purpose.</p>
+      <h2>Your rights</h2>
+      <p>Under GDPR and equivalent laws, you have the right to access, correct, export, or delete your data at any time. Email us at <a href="mailto:atelier@vogue.test">atelier@vogue.test</a> and we'll respond within 72 hours.</p>
+      <h2>Cookies</h2>
+      <p>We use a single first-party session cookie to maintain your cart. No analytics cookies, no advertising cookies.</p>
+      <p className="legal-updated">Last updated: July 2025</p>
+    </LegalPage>
+  );
+}
+
+function TermsPage() {
+  return (
+    <LegalPage title="Terms of Service" eyebrow="Legal">
+      <p className="lead">By using VOGUE. you agree to these terms. We've written them to be fair and readable, not to hide anything.</p>
+      <h2>Products & availability</h2>
+      <p>All items are produced in limited, traceable batches. We reserve the right to cancel an order if a product becomes unavailable after purchase, in which case you'll receive a full refund within 5 business days.</p>
+      <h2>Pricing</h2>
+      <p>All prices are in USD and include applicable taxes. Price changes will never affect an order already placed.</p>
+      <h2>Intellectual property</h2>
+      <p>All content on this site — photography, copy, design, and code — is the intellectual property of VOGUE. Reproduction without written consent is prohibited.</p>
+      <h2>Limitation of liability</h2>
+      <p>Our liability is limited to the value of the order placed. We are not liable for indirect or consequential losses.</p>
+      <h2>Governing law</h2>
+      <p>These terms are governed by the laws of the State of New York, without regard to conflict-of-law principles.</p>
+      <p className="legal-updated">Last updated: July 2025</p>
+    </LegalPage>
+  );
+}
+
+function ContactPage() {
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: '', email: '', subject: 'Order enquiry', message: '' });
+  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSent(true); };
+  const update = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setForm(f => ({ ...f, [field]: e.target.value }));
 
   return (
-    <AnimatePresence>
-      {content && (
-        <motion.div className="overlay" role="dialog" aria-modal="true" aria-labelledby="info-title" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-          <motion.div ref={modalRef} className="search-dialog info-dialog" initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 24, opacity: 0 }}>
-            <button className="icon-button dialog-close" aria-label="Close dialog" onClick={onClose}>
-              <X size={20} />
-            </button>
-            <h2 className="info-title" id="info-title">
-              {content.title}
-            </h2>
-            <div className="info-content">
-              {content.content}
+    <PageTransition>
+      <main className="contact-page">
+        <div className="contact-inner">
+          <div className="contact-intro">
+            <a href="/index.html" className="legal-back"><ArrowLeft size={15} /> Back to store</a>
+            <p className="eyebrow">Get in touch</p>
+            <h1 className="legal-title">Contact Us</h1>
+            <p className="lead">We respond to every message within one business day.</p>
+            <div className="contact-meta">
+              <div><p className="contact-label">Email</p><p><a href="mailto:atelier@vogue.test">atelier@vogue.test</a></p></div>
+              <div><p className="contact-label">Hours</p><p>Monday – Friday<br />9:00 am – 5:00 pm EST</p></div>
+              <div><p className="contact-label">Response time</p><p>Within 1 business day</p></div>
             </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          </div>
+          <div className="contact-form-wrap">
+            {sent ? (
+              <div className="contact-success">
+                <Check size={32} strokeWidth={1.5} />
+                <h2>Message received</h2>
+                <p>We'll get back to you at <strong>{form.email}</strong> within one business day.</p>
+                <a href="/index.html" className="checkout-link">Return to store</a>
+              </div>
+            ) : (
+              <form className="contact-form" onSubmit={handleSubmit} noValidate>
+                <div className="form-row-two">
+                  <div className="form-group">
+                    <label htmlFor="c-name">Name</label>
+                    <input id="c-name" type="text" value={form.name} onChange={update('name')} required placeholder="Your full name" />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="c-email">Email</label>
+                    <input id="c-email" type="email" value={form.email} onChange={update('email')} required placeholder="you@example.com" />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="c-subject">Subject</label>
+                  <select id="c-subject" value={form.subject} onChange={update('subject')}>
+                    <option>Order enquiry</option>
+                    <option>Return or exchange</option>
+                    <option>Repair request</option>
+                    <option>Material questions</option>
+                    <option>Press & wholesale</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="c-message">Message</label>
+                  <textarea id="c-message" rows={6} value={form.message} onChange={update('message')} required placeholder="Tell us how we can help…" />
+                </div>
+                <Button type="submit" className="wide">Send message <ArrowRight size={17} /></Button>
+              </form>
+            )}
+          </div>
+        </div>
+      </main>
+    </PageTransition>
+  );
+}
+
+function FAQPage() {
+  const [open, setOpen] = useState<number | null>(null);
+  const faqs = [
+    { q: 'Do you offer repairs?', a: "Yes. Every VOGUE. garment comes with a lifetime repair guarantee. Ship it back and we'll restore it to original condition at no charge." },
+    { q: 'How do I care for linen?', a: 'Machine wash cold on a gentle cycle, or hand wash. Line dry always — heat degrades linen fibre over time. The fabric softens with each wash.' },
+    { q: 'What sizes do you carry?', a: 'We carry XS through XXL in all styles. Each product page includes a detailed size guide with body measurements, not vanity sizing.' },
+    { q: 'Are your materials truly traceable?', a: 'Yes — every material has a full chain-of-custody document available on request. Our linen is sourced from Normandy cooperatives, our thread is organic certified cotton, and our buttons are Corozo nut.' },
+    { q: 'How long does shipping take?', a: 'Standard carbon-neutral shipping takes 4–7 business days within the US. Express (2–3 days) and international options are available at checkout.' },
+    { q: 'What is your returns policy?', a: 'You have 30 days to return unworn, unaltered items with tags attached. Before returning, consider a repair or alteration — we cover the cost.' },
+    { q: 'Do you ship internationally?', a: 'Yes. We ship to 45+ countries via carbon-offset carriers. International orders may be subject to local customs duties, the responsibility of the recipient.' },
+    { q: 'Can I cancel or change my order?', a: "Orders can be cancelled or modified within 2 hours of placement. After that email us immediately and we'll do our best." },
+    { q: 'How is packaging handled?', a: 'All packaging is 100% compostable. Our garment bags are made from recycled cotton scraps. No plastic, ever.' },
+    { q: 'Do you offer gift cards?', a: 'Gift cards are available in $50, $100, $250, and $500 denominations. They never expire.' },
+  ];
+
+  return (
+    <PageTransition>
+      <main className="legal-page">
+        <div className="legal-page-inner faq-inner">
+          <a href="/index.html" className="legal-back"><ArrowLeft size={15} /> Back to store</a>
+          <p className="eyebrow">Support</p>
+          <h1 className="legal-title">Frequently asked questions</h1>
+          <p className="lead" style={{ marginBottom: '3rem' }}>Everything you need to know about materials, sizing, repairs, and orders.</p>
+          <div className="faq-list" role="list">
+            {faqs.map((item, i) => (
+              <div key={i} className={`faq-item${open === i ? ' open' : ''}`} role="listitem">
+                <button className="faq-question" aria-expanded={open === i} onClick={() => setOpen(open === i ? null : i)}>
+                  {item.q}
+                  <ChevronDown size={18} className="faq-chevron" />
+                </button>
+                <div className="faq-answer"><p>{item.a}</p></div>
+              </div>
+            ))}
+          </div>
+          <div className="faq-cta">
+            <p>Still have questions?</p>
+            <a href="/contact.html" className="checkout-link">Contact us <ArrowRight size={16} /></a>
+          </div>
+        </div>
+      </main>
+    </PageTransition>
+  );
+}
+
+function ShippingPage() {
+  return (
+    <LegalPage title="Shipping & Returns" eyebrow="Support">
+      <p className="lead">Every order is shipped carbon-neutral. We've partnered with certified offset carriers so your purchase doesn't cost the earth — literally.</p>
+      <h2>Shipping options</h2>
+      <div className="shipping-table">
+        <div className="shipping-row header"><span>Service</span><span>Estimated time</span><span>Cost</span></div>
+        <div className="shipping-row"><span>Standard (carbon-neutral)</span><span>4–7 business days</span><span>$8 / Free over $150</span></div>
+        <div className="shipping-row"><span>Express</span><span>2–3 business days</span><span>$18</span></div>
+        <div className="shipping-row"><span>International</span><span>7–14 business days</span><span>From $22</span></div>
+      </div>
+      <h2>Processing time</h2>
+      <p>Orders are processed within 1–2 business days. You'll receive a tracking link via email once your order ships.</p>
+      <h2>International orders</h2>
+      <p>We ship to 45+ countries. Local customs duties and import taxes are the responsibility of the recipient — we cannot undervalue declarations.</p>
+      <h2>Returns</h2>
+      <p>We have a 30-day return window for unworn, unaltered items with original tags attached. Before initiating a return, we encourage repair, alteration, or exchange first.</p>
+      <h2>How to return</h2>
+      <p>Email <a href="mailto:atelier@vogue.test">atelier@vogue.test</a> with your order number. We'll issue a prepaid return label within 24 hours. Refunds process within 5 business days of receiving your return.</p>
+      <h2>Conditions</h2>
+      <p>Items must be unworn, unwashed, and unaltered with all original tags attached. Items marked as Final Sale are not eligible for return.</p>
+      <p className="legal-updated">Last updated: July 2025</p>
+    </LegalPage>
+  );
+}
+
+function AboutPage() {
+  return (
+    <PageTransition>
+      <main className="about-page">
+        <div className="about-hero">
+          <div className="about-hero-text">
+            <a href="/index.html" className="legal-back"><ArrowLeft size={15} /> Back to store</a>
+            <p className="eyebrow">About VOGUE.</p>
+            <h1 className="about-title">Clothing should leave<br /><em>no trace.</em></h1>
+            <p className="lead">We spent two years building a circular supply chain before producing a single garment.</p>
+          </div>
+        </div>
+        <section className="about-section">
+          <div className="about-section-inner">
+            <div className="about-label"><span className="eyebrow">01 — Our Story</span></div>
+            <div className="about-copy">
+              <h2>Built on a single principle</h2>
+              <p>VOGUE. was founded in 2022 by a small team of designers and supply chain engineers who were tired of greenwashing. We believed that if a brand can't trace every component to its source, it has no right to call itself sustainable.</p>
+              <p>We started by mapping the full lifecycle of a single linen dress — from soil to garment to end-of-life. That process took eight months and changed how we built everything: the products, the supply chain, the company itself.</p>
+              <p>We launched in 2024 with five pieces. All five sold out in three days. We run in small batches not as a marketing tactic, but because that's all we can produce while maintaining full traceability.</p>
+            </div>
+          </div>
+        </section>
+        <section className="about-section about-section-alt">
+          <div className="about-section-inner">
+            <div className="about-label"><span className="eyebrow">02 — Materials</span></div>
+            <div className="about-copy">
+              <h2>Every fibre, documented</h2>
+              <p>We don't use the word "sustainable" unless we can prove it. Every material has a full chain-of-custody document available on request.</p>
+              <div className="materials-grid">
+                <div className="material-card"><h3>Linen</h3><p>Sourced from family cooperatives in Normandy, France. Dew-retted naturally — no chemicals. Lower water consumption than cotton by a factor of 10.</p></div>
+                <div className="material-card"><h3>Buttons</h3><p>Carved from fallen Corozo palm nuts in Ecuador. No trees felled. Each button is unique. Naturally biodegradable within 5 years.</p></div>
+                <div className="material-card"><h3>Thread</h3><p>100% GOTS-certified organic cotton thread. Dyed with OEKO-TEX certified dyes. Fully biodegradable.</p></div>
+                <div className="material-card"><h3>Packaging</h3><p>100% compostable — garment bags made from recycled cotton scraps. FSC-certified shipping boxes. Zero plastic.</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="about-section">
+          <div className="about-section-inner">
+            <div className="about-label"><span className="eyebrow">03 — Sustainability</span></div>
+            <div className="about-copy">
+              <h2>Measured, not marketed</h2>
+              <p>Sustainability is not a feature we added — it's the reason VOGUE. exists. We measure our impact with third-party verified numbers, published annually.</p>
+              <div className="impact-stats">
+                <div className="impact-stat"><span className="impact-number">−18 kg</span><span className="impact-label">CO₂ negated per garment vs. industry average</span></div>
+                <div className="impact-stat"><span className="impact-number">94%</span><span className="impact-label">Less water used than conventional cotton</span></div>
+                <div className="impact-stat"><span className="impact-number">100%</span><span className="impact-label">Living wages paid across our supply chain</span></div>
+                <div className="impact-stat"><span className="impact-number">0</span><span className="impact-label">Plastic used in packaging or product</span></div>
+              </div>
+              <p>We publish our full impact report every January. <a href="/contact.html">Request a copy →</a></p>
+            </div>
+          </div>
+        </section>
+        <div className="about-cta">
+          <p>Ready to start?</p>
+          <a href="/index.html#edit" className="checkout-link">Shop the edit <ArrowRight size={16} /></a>
+        </div>
+      </main>
+    </PageTransition>
   );
 }
 
@@ -769,12 +920,7 @@ function FormInput({ id, label, ...props }: React.InputHTMLAttributes<HTMLInputE
   );
 }
 
-function Footer({ onOpenInfo }: { onOpenInfo: (k: keyof typeof DIALOG_CONTENT) => void }) {
-  const handleLink = (k: keyof typeof DIALOG_CONTENT) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    onOpenInfo(k);
-  };
-
+function Footer() {
   return (
     <footer className="footer">
       <div className="footer-top">
@@ -796,17 +942,17 @@ function Footer({ onOpenInfo }: { onOpenInfo: (k: keyof typeof DIALOG_CONTENT) =
           <div className="footer-col">
             <h3>About</h3>
             <nav aria-label="About navigation">
-              <a href="#story" onClick={handleLink('story')}>Our Story</a>
-              <a href="#materials" onClick={handleLink('materials')}>Materials</a>
-              <a href="#sustainability" onClick={handleLink('sustainability')}>Sustainability</a>
+              <a href="/about.html">Our Story</a>
+              <a href="/about.html#materials">Materials</a>
+              <a href="/about.html#sustainability">Sustainability</a>
             </nav>
           </div>
           <div className="footer-col">
             <h3>Support</h3>
             <nav aria-label="Support navigation">
-              <a href="#contact" onClick={handleLink('contact')}>Contact Us</a>
-              <a href="#faq" onClick={handleLink('faq')}>FAQ</a>
-              <a href="#returns" onClick={handleLink('returns')}>Shipping & Returns</a>
+              <a href="/contact.html">Contact Us</a>
+              <a href="/faq.html">FAQ</a>
+              <a href="/shipping.html">Shipping & Returns</a>
             </nav>
           </div>
         </div>
@@ -814,8 +960,8 @@ function Footer({ onOpenInfo }: { onOpenInfo: (k: keyof typeof DIALOG_CONTENT) =
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} VOGUE. All rights reserved.</p>
         <nav aria-label="Legal navigation">
-          <a href="#privacy" onClick={handleLink('privacy')}>Privacy Policy</a>
-          <a href="#terms" onClick={handleLink('terms')}>Terms of Service</a>
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
         </nav>
       </div>
     </footer>
@@ -823,11 +969,16 @@ function Footer({ onOpenInfo }: { onOpenInfo: (k: keyof typeof DIALOG_CONTENT) =
 }
 
 function App() {
-  const [infoKey, setInfoKey] = useState<keyof typeof DIALOG_CONTENT | null>(null);
-
   const page = useMemo(() => {
-    if (window.location.pathname.endsWith('/product.html')) return <ProductPage />;
-    if (window.location.pathname.endsWith('/checkout.html')) return <CheckoutPage />;
+    const path = window.location.pathname;
+    if (path.endsWith('/product.html')) return <ProductPage />;
+    if (path.endsWith('/checkout.html')) return <CheckoutPage />;
+    if (path.endsWith('/privacy.html')) return <PrivacyPage />;
+    if (path.endsWith('/terms.html')) return <TermsPage />;
+    if (path.endsWith('/contact.html')) return <ContactPage />;
+    if (path.endsWith('/faq.html')) return <FAQPage />;
+    if (path.endsWith('/shipping.html')) return <ShippingPage />;
+    if (path.endsWith('/about.html')) return <AboutPage />;
     return <HomePage />;
   }, []);
 
@@ -835,8 +986,7 @@ function App() {
     <CartProvider>
       <Header />
       {page}
-      <Footer onOpenInfo={setInfoKey} />
-      <InfoDialog contentKey={infoKey} onClose={() => setInfoKey(null)} />
+      <Footer />
     </CartProvider>
   );
 }

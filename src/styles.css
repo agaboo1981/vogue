@@ -1083,7 +1083,507 @@ details p {
   gap: 1.5rem;
 }
 
+/* ─── Legal / Info Pages ────────────────────────────────── */
+
+.legal-page {
+  min-height: 80vh;
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 3rem);
+  background: var(--paper);
+}
+
+.legal-page-inner {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.faq-inner {
+  max-width: 68rem;
+}
+
+.legal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--stone);
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+  transition: color 0.2s ease;
+}
+
+.legal-back:hover { color: var(--ink); }
+
+.legal-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0.5rem 0 2.5rem;
+  line-height: 1.1;
+}
+
+.legal-body {
+  max-width: 46rem;
+}
+
+.legal-body h2 {
+  font-size: 1.05rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin: 3rem 0 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.legal-body p,
+.legal-body li {
+  color: var(--stone);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.legal-body ul {
+  padding-left: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.legal-body a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.lead {
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  color: var(--stone);
+  line-height: 1.75;
+  margin-bottom: 3rem;
+}
+
+.legal-updated {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ─── Shipping Table ─────────────────────────────────────── */
+
+.shipping-table {
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  overflow: hidden;
+  margin: 1.5rem 0 2rem;
+}
+
+.shipping-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: var(--stone);
+}
+
+.shipping-row:last-child { border-bottom: 0; }
+
+.shipping-row.header {
+  background: var(--cream);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+
+/* ─── FAQ Page ───────────────────────────────────────────── */
+
+.faq-list {
+  border-top: 1px solid var(--line);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  gap: 1rem;
+  transition: color 0.2s ease;
+}
+
+.faq-question:hover { color: var(--clay); }
+
+.faq-chevron {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  color: var(--stone);
+}
+
+.faq-item.open .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.faq-item.open .faq-answer {
+  grid-template-rows: 1fr;
+}
+
+.faq-answer p {
+  overflow: hidden;
+  padding: 0 0 1.5rem;
+  color: var(--stone);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.faq-cta {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.faq-cta p {
+  font-size: 1.1rem;
+  color: var(--stone);
+  margin: 0;
+}
+
+/* ─── Contact Page ───────────────────────────────────────── */
+
+.contact-page {
+  min-height: 80vh;
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 3rem);
+  background: var(--paper);
+}
+
+.contact-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: start;
+}
+
+.contact-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.contact-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  margin: 0 0 0.4rem;
+}
+
+.contact-meta p {
+  color: var(--stone);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.contact-meta a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-form-wrap {
+  padding: clamp(2rem, 4vw, 3.5rem);
+  background: var(--cream);
+  border-radius: 0.5rem;
+  border: 1px solid var(--line);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.3rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.97rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--ink);
+}
+
+.contact-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 3rem 2rem;
+  color: var(--ink);
+}
+
+.contact-success h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.contact-success p {
+  color: var(--stone);
+  max-width: 24rem;
+}
+
+/* ─── About Page ─────────────────────────────────────────── */
+
+.about-page { background: var(--paper); }
+
+.about-hero {
+  min-height: 65vh;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 4vw, 3rem);
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+}
+
+.about-hero-text { max-width: 56rem; }
+
+.about-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 0.75rem 0 1.5rem;
+}
+
+.about-title em {
+  font-style: italic;
+  color: var(--clay);
+}
+
+.about-section {
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.about-section-alt { background: var(--cream); }
+
+.about-section-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.about-label { padding-top: 0.25rem; }
+
+.about-copy h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+
+.about-copy p {
+  color: var(--stone);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  max-width: 42rem;
+}
+
+.about-copy a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.material-card {
+  padding: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  background: var(--paper);
+}
+
+.material-card h3 {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  margin: 0 0 0.75rem;
+}
+
+.material-card p {
+  font-size: 0.95rem;
+  color: var(--stone);
+  line-height: 1.7;
+  margin: 0;
+  max-width: none;
+}
+
+.impact-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  overflow: hidden;
+  margin: 2rem 0 2.5rem;
+}
+
+.impact-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2rem 1.5rem;
+  background: var(--paper);
+}
+
+.impact-number {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  color: var(--ink);
+  line-height: 1;
+}
+
+.impact-label {
+  font-size: 0.85rem;
+  color: var(--stone);
+  line-height: 1.5;
+}
+
+.about-cta {
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.about-cta p {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--ink);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .contact-inner,
+  .about-section-inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .form-row-two,
+  .materials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .shipping-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-cta,
+  .faq-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .impact-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
 .mobile-menu-toggle {
+
   display: none;
   font-size: 0.78rem;
   font-weight: 800;
