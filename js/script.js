@@ -175,25 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1200);
     });
 
-    // 2. Custom Cursor (Only for non-touch devices)
-    const cursor = document.querySelector('.custom-cursor');
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    if (cursor && !isTouchDevice) {
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        const interactables = document.querySelectorAll('a, button, .product-card, input, label');
-        interactables.forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-    } else if (cursor) {
-        cursor.style.display = 'none';
-        document.body.style.cursor = 'auto';
-    }
 
     // 3. Scroll Navbar
     const nav = document.querySelector('nav');

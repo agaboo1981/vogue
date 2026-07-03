@@ -13,8 +13,12 @@ body {
     overflow-x: hidden;
 }
 
+img, video, canvas, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
 body { 
-    cursor: none; 
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -29,27 +33,7 @@ h1, h2, h3, h4, .serif {
     font-family: 'Playfair Display', serif;
 }
 
-/* --- Custom Cursor --- */
-.custom-cursor {
-    width: 24px;
-    height: 24px;
-    background: white;
-    border: 1px solid var(--black);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    mix-blend-mode: difference;
-    transition: transform 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67), opacity 0.2s ease-out;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
 
-.custom-cursor.hover {
-    transform: translate(-50%, -50%) scale(4);
-    background: white;
-    opacity: 0.5;
-}
 
 /* --- Preloader --- */
 #preloader {
@@ -264,3 +248,16 @@ a:focus-visible, button:focus-visible {
     margin-bottom: 0.5rem;
     color: var(--black);
 }
+
+@media (max-width: 768px) {
+    /* Prevent text elements from causing overflow */
+    h1, h2, h3, h4, h5, h6, p, a, span, li {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    .form-input {
+        font-size: 16px; /* Prevents iOS auto-zoom */
+    }
+}
+
